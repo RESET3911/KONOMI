@@ -1,4 +1,4 @@
-type Screen = 'list' | 'quickview';
+type Screen = 'list' | 'quickview' | 'dinner';
 
 type Props = {
   current: Screen;
@@ -8,6 +8,7 @@ type Props = {
 const TABS: { key: Screen; icon: string; label: string }[] = [
   { key: 'list',      icon: '📋', label: '一覧' },
   { key: 'quickview', icon: '⚡', label: 'NG/LIKE' },
+  { key: 'dinner',    icon: '🍽️', label: '提案' },
 ];
 
 export default function BottomNav({ current, onChange }: Props) {

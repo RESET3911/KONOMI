@@ -5,11 +5,12 @@ import { subscribeItems, saveItem, deleteItem } from './utils/storage';
 import UserSelectScreen from './components/UserSelectScreen';
 import HomeScreen from './components/HomeScreen';
 import QuickViewScreen from './components/QuickViewScreen';
+import DinnerSuggestScreen from './components/DinnerSuggestScreen';
 import ItemFormModal from './components/ItemFormModal';
 import BottomNav from './components/BottomNav';
 import Toast from './components/Toast';
 
-type Screen = 'list' | 'quickview';
+type Screen = 'list' | 'quickview' | 'dinner';
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState<UserId | null>(null);
@@ -99,6 +100,12 @@ export default function App() {
         )}
         {screen === 'quickview' && (
           <QuickViewScreen items={items} />
+        )}
+        {screen === 'dinner' && (
+          <DinnerSuggestScreen
+            currentUser={currentUser}
+            onToast={(message, type) => setToast({ message, type })}
+          />
         )}
       </main>
 
