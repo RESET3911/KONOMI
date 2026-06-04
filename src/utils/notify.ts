@@ -1,12 +1,8 @@
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase';
-import type { KonomiItem, UserId } from '../types';
+import type { KonomiItem } from '../types';
 
 type FsUser = 'saku' | 'takahashi' | 'both';
-
-function konomiUserToFsId(userId: UserId): FsUser {
-  return userId === 'takahashi' ? 'takahashi' : 'saku';
-}
 
 async function writeNotification(params: {
   toUser: FsUser;
