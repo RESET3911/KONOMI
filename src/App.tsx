@@ -1,3 +1,4 @@
+import { loadUser, saveUser } from './shared/users';
 import { useState, useEffect, useCallback } from 'react';
 import type { KonomiItem, UserId } from './types';
 import { USER_LABELS, USER_COLORS } from './types';
@@ -13,7 +14,7 @@ import Toast from './components/Toast';
 type Screen = 'list' | 'quickview' | 'dinner';
 
 export default function App() {
-  const [currentUser, setCurrentUser] = useState<UserId | null>(null);
+  const [currentUser, setCurrentUser] = useState<UserId | null>(() => loadUser());
   const [items, setItems] = useState<KonomiItem[]>([]);
   const [screen, setScreen] = useState<Screen>('list');
   const [loading, setLoading] = useState(true);
@@ -59,7 +60,7 @@ export default function App() {
   }
 
   if (!currentUser) {
-    return <UserSelectScreen onSelect={setCurrentUser} />;
+    return <UserSelectScreen onSelect={u => { saveUser(u); setCurrentUser(u); }} />;
   }
 
   const colors = USER_COLORS[currentUser];

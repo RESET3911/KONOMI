@@ -1,22 +1,24 @@
-export type UserId = 'saku' | 'takahashi';
+// 正規ID（全ST APPS共通）。定義は src/shared/users.ts
+export type { UserId } from './shared/users';
+import type { UserId } from './shared/users';
 
 export const USER_LABELS: Record<UserId, string> = {
-  saku: 'さく',
-  takahashi: 'たかはし',
+  kenshin: 'けんしん',
+  rena: 'れなちゃん',
 };
 
 export const USER_COLORS: Record<UserId, { from: string; to: string; text: string; badge: string }> = {
-  saku: {
-    from: 'from-pink-400',
-    to: 'to-rose-400',
-    text: 'text-rose-600',
-    badge: 'bg-rose-100 text-rose-600',
-  },
-  takahashi: {
+  kenshin: {
     from: 'from-violet-400',
     to: 'to-indigo-400',
     text: 'text-violet-600',
     badge: 'bg-violet-100 text-violet-600',
+  },
+  rena: {
+    from: 'from-pink-400',
+    to: 'to-rose-400',
+    text: 'text-rose-600',
+    badge: 'bg-rose-100 text-rose-600',
   },
 };
 

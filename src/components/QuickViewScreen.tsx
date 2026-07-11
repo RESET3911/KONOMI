@@ -12,7 +12,7 @@ export default function QuickViewScreen({ items }: Props) {
   const [catFilter, setCatFilter] = useState<Category | null>(null);
   const [ratingFilter, setRatingFilter] = useState<Rating | null>(null);
 
-  function getItems(userId: 'saku' | 'takahashi', rating: Rating) {
+  function getItems(userId: 'kenshin' | 'rena', rating: Rating) {
     return items.filter(i =>
       i.userId === userId &&
       i.rating === rating &&
@@ -74,9 +74,9 @@ export default function QuickViewScreen({ items }: Props) {
       <div className="px-3 pt-3 flex flex-col gap-6">
         {displayRatings.map(rating => {
           const ratCfg = RATINGS[rating];
-          const sakuItems = getItems('saku', rating);
-          const takahashiItems = getItems('takahashi', rating);
-          if (sakuItems.length === 0 && takahashiItems.length === 0) return null;
+          const kenshinItems = getItems('kenshin', rating);
+          const renaItems = getItems('rena', rating);
+          if (kenshinItems.length === 0 && renaItems.length === 0) return null;
 
           return (
             <div key={rating}>
@@ -88,8 +88,8 @@ export default function QuickViewScreen({ items }: Props) {
 
               {/* Two-column layout */}
               <div className="grid grid-cols-2 gap-2">
-                {(['saku', 'takahashi'] as const).map(uid => {
-                  const userItems = uid === 'saku' ? sakuItems : takahashiItems;
+                {(['kenshin', 'rena'] as const).map(uid => {
+                  const userItems = uid === 'kenshin' ? kenshinItems : renaItems;
                   const colors = USER_COLORS[uid];
                   return (
                     <div key={uid} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
@@ -128,7 +128,7 @@ export default function QuickViewScreen({ items }: Props) {
           );
         })}
 
-        {displayRatings.every(r => getItems('saku', r).length === 0 && getItems('takahashi', r).length === 0) && (
+        {displayRatings.every(r => getItems('kenshin', r).length === 0 && getItems('rena', r).length === 0) && (
           <div className="text-center py-16 text-gray-400">
             <div className="text-4xl mb-3">📭</div>
             <p className="text-sm">該当するデータがありません</p>

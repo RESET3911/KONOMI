@@ -19,7 +19,7 @@ export default function UserSelectScreen({ onSelect }: Props) {
       <p className="text-gray-500 text-sm font-medium mb-5">どちらで使いますか？</p>
 
       <div className="flex gap-4 w-full max-w-xs">
-        {(['saku', 'takahashi'] as UserId[]).map(userId => {
+        {(['kenshin', 'rena'] as UserId[]).map(userId => {
           const colors = USER_COLORS[userId];
           return (
             <button

@@ -1,16 +1,6 @@
-import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+// Firebase 初期化は全アプリ共通（src/shared/firebase.ts）に集約
 import { getFunctions } from 'firebase/functions';
+import { app } from './shared/firebase';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyD46e6p6Kv_gLkEDtP1YIsaj8eqh_UBtQ4",
-  authDomain: "ringi-1b31a.firebaseapp.com",
-  projectId: "ringi-1b31a",
-  storageBucket: "ringi-1b31a.firebasestorage.app",
-  messagingSenderId: "903432482546",
-  appId: "1:903432482546:web:88186598c98486e514aa6b",
-};
-
-const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
+export { db } from './shared/firebase';
 export const functions = getFunctions(app, 'asia-northeast1');

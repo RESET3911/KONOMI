@@ -11,7 +11,7 @@ type Props = {
 };
 
 export default function HomeScreen({ currentUser, items, onAdd, onEdit, onDelete }: Props) {
-  const partner: UserId = currentUser === 'saku' ? 'takahashi' : 'saku';
+  const partner: UserId = currentUser === 'kenshin' ? 'rena' : 'kenshin';
   const [viewUser, setViewUser] = useState<UserId>(currentUser);
   const [catFilter, setCatFilter] = useState<Category | null>(null);
   const [ratingFilter, setRatingFilter] = useState<Rating | null>(null);
